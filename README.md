@@ -6,6 +6,10 @@
 
 ## Play it
 
+**▶ Play it now: [tristan958.github.io/fayzians-game](https://tristan958.github.io/fayzians-game/)** — works on desktop (keyboard) and phones/tablets (touch controls).
+
+### Run it locally
+
 It's a fully static web app — no build step, no dependencies to install (Three.js is vendored in `lib/`). Just serve the folder:
 
 ```bash
