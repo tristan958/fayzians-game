@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>SCUDDERFING DRIFT — Open World</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏎️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{ "imports": { "three": "./lib/three.module.js" } }
+</script>
+</head>
+<body>
+
+<canvas id="game-canvas"></canvas>
+
+<!-- ============ TITLE ============ -->
+<div id="title-screen" class="screen">
+  <div class="title-inner">
+    <div class="title-kicker">MIDNIGHT · OPEN WORLD · FREESTYLE</div>
+    <h1 class="title-logo"><span>SCUDDERFING</span><em>DRIFT</em></h1>
+    <div class="title-sub">Neo-Kaido City &nbsp;·&nbsp; six legends in the garage &nbsp;·&nbsp; endless sideways</div>
+    <button id="btn-start" class="neon-btn">ENTER THE CITY</button>
+    <div class="title-hint">press <b>ENTER</b></div>
+  </div>
+  <div class="title-foot">an open-world drift playground · WASD to drive · SPACE to slide</div>
+</div>
+
+<!-- ============ GARAGE ============ -->
+<div id="garage-screen" class="screen hidden">
+  <div class="garage-top">
+    <div class="garage-kicker">// THE GARAGE</div>
+    <h2 id="car-name">SILVIA S15</h2>
+    <div id="car-sub" class="car-sub">Nissan drift royalty</div>
+  </div>
+
+  <button id="car-prev" class="arrow-btn left" aria-label="previous car">‹</button>
+  <button id="car-next" class="arrow-btn right" aria-label="next car">›</button>
+
+  <div class="garage-bottom">
+    <div id="car-story" class="car-story">—</div>
+    <div class="stats">
+      <div class="stat"><label>POWER</label><div class="bar"><i id="st-power"></i></div></div>
+      <div class="stat"><label>GRIP</label><div class="bar"><i id="st-grip"></i></div></div>
+      <div class="stat"><label>DRIFT</label><div class="bar"><i id="st-drift"></i></div></div>
+      <div class="stat"><label>WEIGHT</label><div class="bar"><i id="st-weight"></i></div></div>
+    </div>
+    <button id="btn-drive" class="neon-btn big">DRIVE ➜</button>
+    <div class="garage-hint">←  → &nbsp;browse&nbsp; · &nbsp;ENTER&nbsp;drive</div>
+  </div>
+  <div id="car-dots" class="car-dots"></div>
+</div>
+
+<!-- ============ HUD ============ -->
+<div id="hud" class="hidden">
+  <div class="hud-topleft">
+    <div class="score-label">TOTAL SCORE</div>
+    <div id="score-total">0</div>
+    <div id="score-best" class="score-best">BEST 0</div>
+  </div>
+
+  <div id="drift-box" class="drift-box">
+    <div id="drift-points">+0</div>
+    <div id="drift-mult">×1</div>
+    <div id="drift-grade"></div>
+  </div>
+
+  <div id="banner" class="banner hidden"></div>
+
+  <div class="hud-bottomright">
+    <div id="speed-num">0</div>
+    <div class="speed-unit">KM/H</div>
+    <div id="gear-num">N</div>
+  </div>
+
+  <canvas id="minimap" width="220" height="220"></canvas>
+
+  <div id="hint-bar">
+    <span><b>W A S D</b> drive</span><span><b>SPACE</b> handbrake</span><span><b>C</b> camera</span><span><b>R</b> respawn</span><span><b>G</b> garage</span><span><b>M</b> sound</span>
+  </div>
+</div>
+
+<!-- ============ TOUCH ============ -->
+<div id="touch-ui" class="hidden">
+  <div class="t-left">
+    <button id="t-steer-l" class="t-btn">‹</button>
+    <button id="t-steer-r" class="t-btn">›</button>
+  </div>
+  <div class="t-right">
+    <button id="t-hb" class="t-btn small">DRIFT</button>
+    <button id="t-brake" class="t-btn small">−</button>
+    <button id="t-gas" class="t-btn">＋</button>
+  </div>
+</div>
+
+<div id="fader"></div>
+<div id="vignette"></div>
+
+<script type="module" src="js/game.js"></script>
+</body>
+</html>
